@@ -9,3 +9,4 @@ upload
 .brackets.json
 /Readme.markdown
 /node_modules
+.gitignore
