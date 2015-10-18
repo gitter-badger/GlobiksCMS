@@ -1,13 +1,12 @@
 #GlobiksCMS
 
+Система управления контентом (CMS) основанная на платформе Node.JS содержащая статьи, блоги, комментарии, форум, фотогаллереи.
+> ~(В процессе разработки)
 
-
-> Система управления контентом (CMS) основанная на платформе Node.JS содержащая статьи, блоги, комментарии, форум.
->> ~(В процессе разработки)
+[![NPM Version][npm-image]][npm-url]
 
 ##Зависимости:
--[Express](https://www.npmjs.com/package/express)
--[![NPM Version][npm-image]][npm-url]
+- [Express](https://www.npmjs.com/package/express) ~4.x.x
 
 ## License
 
