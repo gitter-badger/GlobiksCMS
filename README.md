@@ -7,7 +7,7 @@
 
 ##Зависимости:
 -[Express](https://www.npmjs.com/package/express)
-[![NPM Version][npm-image]][npm-url]
+-[![NPM Version][npm-image]][npm-url]
 
 ## License
 
