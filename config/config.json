@@ -1,3 +1,9 @@
 {
-    "port": 8505
+    "port": 8505,
+    "secret": "",
+    "title": "GlobiksCMS",
+    "description": "Система управления контентом (CMS) основанная на платформе Node.JS содержащая статьи, блоги, комментарии, форум, фотогаллереи.",
+    "mongoose": {
+        "uri": "mongodb://localhost/globiks"
+    }
 }

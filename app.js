@@ -1,3 +1,4 @@
+
 'use strict';
 var _ = require('underscore');
 var express = require('express');
@@ -10,36 +11,38 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var fs = require('fs');
 
-var config = require('./config/config');
+var config = require('./config/config.json'); // конфиг сайта
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var articles = require('./routes/articles');
 
 var app = express();
-
-var port = 8505; ////TODO: перенести в кофиг
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.set('trust proxy', 1); // trust first proxy
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
 
+app.set('trust proxy', 1); // trust first proxy
 app.use(session({
+    key: 'globiks',
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: {
         //      secure: true, // 
+//        key: 'globiks',
         maxAge: 600000
     }
 }));
@@ -81,6 +84,6 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(process.env.PORT || port);
+app.listen(process.env.PORT || config.port);
 
 module.exports = app;

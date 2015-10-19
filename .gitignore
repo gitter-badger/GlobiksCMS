@@ -10,3 +10,6 @@ upload
 /Readme.markdown
 /node_modules
 .gitignore
+/config/config.js
+/views/include/
+/less/

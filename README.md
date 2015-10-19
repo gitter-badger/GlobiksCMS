@@ -5,8 +5,18 @@
 
 [![NPM Version][npm-image]][npm-url]
 
-##Зависимости:
-- [Express](https://www.npmjs.com/package/express) ~4.x.x
+##Зависимости
+- [Express](https://www.npmjs.com/package/express) ~ 4.13.1
+- [Jade](https://github.com/jadejs/jade) ~ 1.11.0
+- [bootstrap](https://github.com/twbs/bootstrap.git) ~ 3.3.5
+- [mongoose](https://www.npmjs.com/package/mongoose) ~ 4.1.11
+- [oauth2orize](https://www.npmjs.com/package/oauth2orize) ~ 1.0.1
+- [passport](https://www.npmjs.com/package/passport) ~ 0.3.0
+- [faker](https://www.npmjs.com/package/faker) ~ 3.0.1
+
+##Установка
+с помощью npm:
+>$ npm install
 
 ## License
 
