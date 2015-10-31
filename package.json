@@ -18,6 +18,7 @@
     "express": "~4.13.1",
     "express-session": "^1.11.3",
     "faker": "^3.0.1",
+    "iso_9": "^1.0.1",
     "jade": "~1.11.0",
     "mongoose": "^4.1.11",
     "morgan": "~1.6.1",

@@ -1,0 +1,57 @@
+extends layout
+
+block content
+
+    mixin element_list(el, collection)
+        select#avtor
+          each item in collection
+            #{el}(value=item.username)=item.username
+
+    mixin option_list(collection)
+      +element_list("option", collection)
+
+    div#wrapper
+        include ./menu
+        .page-wrapper
+            .container-fluid
+                .row
+                    .col-lg-12
+                        h1 Добавление статьи на сайт.
+                .row
+                    .form-group
+                        form(action="" metod="post")
+                            .col-lg-8.article_add
+                                label Заголовок статьи:
+                                input.form-control(type="text" name="title")
+                                label Статья:
+                                textarea#input_post.form-control(name="post" rows="12" required="required")
+                                label Раздел:
+                                select.razdel(name="razdel")
+                                    option(value="0") === Выберите раздел ===
+                                    option(value="1") 1
+                                    option(value="2") 2
+                                label Автор:
+                                     +option_list(user)    
+                            .col-lg-4.article_add
+                                label Заголовок Страницы:
+                                input.form-control(type="text" name="title_site")
+                                label Описание страницы (description)
+                                textarea#input_desc.form-control(name="desc" rows="3" required="required")
+                                .form-group
+                                    label
+                                        input(type="checkbox" name='comments' value="1", checked).js-switch#comments 
+                                        p Разрешить коментарии статьи.
+                                    label
+                                        input(type="checkbox" name='add' value="1", checked).js-switch#publish 
+                                        p Опубликовать статью.  
+                                    label
+                                        input(type="checkbox" name='poll' value="1", checked).js-switch#poll 
+                                        p Разрешить оценивать статью. 
+                            .col-lg-12
+                                span.input-group-btn
+                                    button#post_add.btn.btn-default.btn-large.btn-bloc(type="button") Добавить статью
+                                       
+    
+    include ./include/footer
+    
+    

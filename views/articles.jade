@@ -1,0 +1,51 @@
+extends layout
+
+block content
+    div#wrapper
+        div#logos
+                header#header(role='banner')
+                    nav#tf-menu.navbar.navbar-default.navbar-fixed-top
+                        .container
+                          .row
+                            // Logo start
+                            .navbar-header
+                              .navbar-brand
+                                a.page-scroll(href='/') #{title}
+                            // / Logo end
+                            .collapse.navbar-collapse.clearfix.navMenu(role='navigation')
+                              ul.nav.navbar-nav.navbar-right
+                                li.active
+                                  a.page-scroll(href='#slider-part') Главная          
+                                li
+                                  a.page-scroll(href='/articles') Статьи           
+                                li
+                                  a.page-scroll(href='#process') Блоги       
+                                li
+                                  a.page-scroll(href='#about') О нас          
+                                li
+                                  a.page-scroll(href='#overview') Screenshots           
+                                li
+                                  a.page-scroll(href='#benefit') Benefit           
+                                li
+                                  a.page-scroll(href='#pricing') Прайс
+                                li
+                                  a.page-scroll(href='#contact') Контакты
+                            // / Navigation end
+                          // / Row end
+                        // / Container end
+    section.slider
+        .slider-wrap
+            div.container
+                .row
+                    div.col-md-4
+                        .slider-img.pull-right.hidden-xs
+                            img.img-responsive(alt='', src='/images/slider2.png')
+                    div.col-md-8
+                        div.slider-content
+                          h1= title
+                          h2 Система Управления Контентом (CMS) основанной на NodeJS. Будьте готовы увидеть что-то удивительное, что изменит ваше представление о CMS.
+    
+    section.article
+        .container
+             
+                                                            

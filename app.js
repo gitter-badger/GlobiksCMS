@@ -5,17 +5,19 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser'),
+    db = require('./models/db/mongoose');
 var bodyParser = require('body-parser');
 //var cookieSession = require('cookie-session');
 var session = require('express-session');
-var fs = require('fs');
 
 var config = require('./config/config.json'); // конфиг сайта
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var articles = require('./routes/articles');
+var routes = require('./routes/index'),
+    users = require('./routes/users'),
+    articles = require('./routes/articles'),
+    admin  = require('./routes/admin');
+
 
 var app = express();
 
@@ -24,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,18 +34,15 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-//app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
-
 app.set('trust proxy', 1); // trust first proxy
 app.use(session({
     key: 'globiks',
-    secret: 'keyboard cat',
+    secret: config.secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
         //      secure: true, // 
-//        key: 'globiks',
-        maxAge: 600000
+        maxAge: 36000000
     }
 }));
 
@@ -52,6 +51,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/articles', articles);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,21 +1,93 @@
 extends layout
 
 block content
-    .blog-masthead
-        .container
-            nav.blog-nav
-              a.blog-nav-item.active(href='#') Home
-              |           
-              a.blog-nav-item(href='#') Post
-              |           
-              a.blog-nav-item(href='#') Blog
-              |           
-              a.blog-nav-item(href='#') New hires
-              |           
-              a.blog-nav-item(href='#') About
-    div.container
-      h1= title
-      p Welcome to #{title}
-
+    div#wrapper
+        div#logos
+                header#header(role='banner')
+                    nav#tf-menu.navbar.navbar-default.navbar-fixed-top
+                        .container
+                          .row
+                            // Logo start
+                            .navbar-header
+                              .navbar-brand
+                                a.page-scroll(href='/') #{title}
+                            // / Logo end
+                            .collapse.navbar-collapse.clearfix.navMenu(role='navigation')
+                              ul.nav.navbar-nav.navbar-right
+                                li.active
+                                  a.page-scroll(href='#slider-part') Главная          
+                                li
+                                  a.page-scroll(href='/articles') Статьи           
+                                li
+                                  a.page-scroll(href='#process') Блоги       
+                                li
+                                  a.page-scroll(href='#about') О нас          
+                                li
+                                  a.page-scroll(href='#overview') Screenshots           
+                                li
+                                  a.page-scroll(href='#benefit') Benefit           
+                                li
+                                  a.page-scroll(href='#pricing') Прайс
+                                li
+                                  a.page-scroll(href='#contact') Контакты
+                            // / Navigation end
+                          // / Row end
+                        // / Container end
+    section.slider
+        .slider-wrap
+            div.container
+                .row
+                    div.col-md-4
+                        .slider-img.pull-right.hidden-xs
+                            img.img-responsive(alt='', src='/images/slider2.png')
+                    div.col-md-8
+                        div.slider-content
+                          h1= title
+                          h2 Система Управления Контентом (CMS) основанной на NodeJS. Будьте готовы увидеть что-то удивительное, что изменит ваше представление о CMS.
+                          
+    section#feature
+    .container
+        .row
+          .heading-inner.text-center
+            h2.sec-title
+              | Добро пожаловать в 
+              span #{title}
+            p Vero doloribus dignissimos, unde architecto sapiente ea expedita non magnam aliquam.
+        // heading row end
+        .row
+          .col-md-4.col-sm-6
+            .row
+              .col-md-12.wow.slideRight
+                .about-inner
+                  i.icon.icon-adjustments                          
+                  .about-content
+                    h4 Friendly support                                
+                    p Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.
+              .col-md-12.wow.slideRight
+                .about-inner
+                  i.icon.icon-heart                       
+                  .about-content
+                    h4 awesome features                              
+                    p Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.
+            // row end            
+          .col-md-4.col-sm-4.col-xs-4.visible-md.visible-lg.wow.fadeInDown.animated(data-wow-delay='.3s', style='visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;')
+            img.img-responsive(alt='', src='images/img2.png')                
+          .col-md-4.col-sm-6
+            .row
+              .col-md-12.wow.slideLeft
+                .about-inner
+                  i.icon.icon-lightbulb                           
+                  .about-content
+                    h4 HTML5 & CSS3                              
+                    p Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.
+              .col-md-12.wow.slideLeft
+                .about-inner
+                  i.icon.icon-presentation                           
+                  .about-content
+                    h4 Адаптивный дизайн                            
+                    p Architecto provident eaque mollitia, et repellendus commodi dignissimos aspernatur.et repellendus commodi dignissimos aspernatur.
+            // row end
+        // row end
+      // container end
 
 //-extends footer

@@ -1,6 +1,6 @@
 {
     "port": 8505,
-    "secret": "",
+    "secret": "GlobiksCMS",
     "title": "GlobiksCMS",
     "description": "Система управления контентом (CMS) основанная на платформе Node.JS содержащая статьи, блоги, комментарии, форум, фотогаллереи.",
     "mongoose": {
