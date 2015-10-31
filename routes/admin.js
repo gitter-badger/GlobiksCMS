@@ -4,6 +4,8 @@ var express = require('express'),
 
 var Article = require('../models/article'), // статьи
     User = require('../models/user'); // пользователи
+var translit = require('iso_9/translit'); // русский в транслит
+var Admin = require('../models/admin');
 
 /*  
  *   @description GET home page. 
@@ -42,13 +44,13 @@ router.get('/articles/add', function (req, res, next) {
                 description: config.description,
                 user: users
             });
-            console.log(users);
+            //            console.log(users);
         }
     });
 });
 
 /* 
- *   @description POST add article to the site - добавляем статью в БД
+ *   @description POST add article to the site - добавляем статью на сайт
  */
 router.all('/article-post-add', function (req, res, next) {
     var title = req.body.title,
@@ -57,34 +59,22 @@ router.all('/article-post-add', function (req, res, next) {
         title_site = req.body.title_site,
         desc = req.body.desc,
         comment = req.body.comment,
-        poll = req.body.poll;
+        poll = req.body.poll,
+        publish = req.body.publish;
 
-    var article = new Article({
-        title: title,
-        author: avtor,
-        post: post,
-        title_site: title_site,
-        comment: comment,
-        poll: poll,
-        description: desc
-            //        images: faker.image.image(),
-    });
-
-    article.save(function (err, article) {
+    Admin.PostSave(title, avtor, post, title_site, publish, comment, poll, desc, function (err, call) {
         if (!err) {
             res.jsonp({
                 error: 0,
                 mes: 'Статья добавлена'
             });
         } else {
-            return res.jsonp({
+            res.jsonp({
                 error: 1,
                 mes: err
-            });;
+            });
         }
     });
-    //    next();
-    //    res.send('POST request to the homepage');
 });
 
 

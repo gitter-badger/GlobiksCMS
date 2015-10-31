@@ -35,10 +35,6 @@ h5 {
   min-height: 100%;
   position: relative;
 }
-#logos {
-  background: #000000 none repeat scroll 0 0;
-  height: 60px;
-}
 div.navbar-header div.navbar-brand a.page-scroll {
   color: #000000;
   font: 1.8em/0.5em "Lucida Grande", Helvetica, Arial, sans-serif;

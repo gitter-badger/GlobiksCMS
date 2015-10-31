@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+var id = new mongoose.Types.ObjectId;
 //    ObjectId = Schema.ObjectId;
 //    
 //    // Article
@@ -16,6 +17,10 @@ var mongoose = require('mongoose'),
 //});
 
 var Article = new Schema({
+    some: {
+        type: Number,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -32,7 +37,11 @@ var Article = new Schema({
         type: String,
         required: true
     },
-    comment: {
+    publish: {
+        type: Boolean,
+        required: true
+    },
+    comment_show: {
         type: Boolean,
         required: true
     },
@@ -40,6 +49,13 @@ var Article = new Schema({
         type: Boolean,
         required: true
     },
+//    comments: [{
+//        text: String,
+//        postedBy: {
+//            type: mongoose.Schema.Types.ObjectId,
+//            ref: 'User'
+//        }
+//    }]
     description: {
         type: String,
         required: true
@@ -48,35 +64,24 @@ var Article = new Schema({
     modified: {
         type: Date,
         default: Date.now
+    },
+    url: {
+        type: String,
+        lowercase: true
     }
 });
 
-//Article.path('title').validate(function (v) {
-//    return v.length > 5 && v.length < 70;
-//});
+Article.path('title').validate(function (v) {
+    if(v.length > 5 && v.length < 350) return true
+        return v.length
+}, 'Заголовок не может быть короче 5 и дленее 350 символов');
+//Article.path('url').validate(function (v){
+//    
+//}
+//Article.path('url').validate(function (url) {
+//  // if you are authenticating by any of the oauth strategies, don't validate
+////  if (authTypes.indexOf(this.provider) !== -1) return true
+//  return url+'-';
+//}, 'URL cannot be blank');
 
 module.exports = mongoose.model('Article', Article);
-
-
-//function Post(name, head, title, tags, post) {
-//    this.name = name;
-//    this.head = head;
-//    this.title = title.trim();
-//    this.tags = tags;
-//    this.post = post;
-//}
-//
-//module.exports = Post;
-//
-//
-//Post.prototype.save = function (callback) {
-//
-//};
-//
-//Post.prototype.getAll = function (callback) {
-//
-//};
-//
-//Post.prototype.update = function (callback) {
-//
-//};

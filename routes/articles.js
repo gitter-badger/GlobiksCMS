@@ -54,10 +54,6 @@ router.post('/add', function (req, res, next) {
             return console.log(err);
         }
     });
-    //    res.json({
-    //            title: config.title,
-    //            description: config.description
-    //        });
     res.render('articles_add', {
         title: config.title,
         description: config.description

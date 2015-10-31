@@ -35,8 +35,11 @@ block content
                             .col-lg-4.article_add
                                 label Заголовок Страницы:
                                 input.form-control(type="text" name="title_site")
-                                label Описание страницы (description)
-                                textarea#input_desc.form-control(name="desc" rows="3" required="required")
+                                label Описание страницы (description):
+                                textarea#input_desc.form-control(name="desc" rows="5" required="required")
+                                label Ключевые слова(description)
+                                textarea#input_key.form-control(name="key" rows="3" required="required")
+                            .col-lg-12   
                                 .form-group
                                     label
                                         input(type="checkbox" name='comments' value="1", checked).js-switch#comments 
@@ -47,7 +50,7 @@ block content
                                     label
                                         input(type="checkbox" name='poll' value="1", checked).js-switch#poll 
                                         p Разрешить оценивать статью. 
-                            .col-lg-12
+                            
                                 span.input-group-btn
                                     button#post_add.btn.btn-default.btn-large.btn-bloc(type="button") Добавить статью
                                        

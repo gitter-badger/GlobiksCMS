@@ -38,9 +38,9 @@ function getCaretPos(obj) {
                 desc = j('#input_desc').val(),
                 comment = j('#comments').prop("checked"),
                 publish = j('#publish').prop("checked"),
-                avtor = j("#asc :selected").val(),
+                avtor = j("#avtor :selected").val(),
                 poll = j('#poll').prop("checked");
-            console.log("Article Add: %s:%s:%s:%s:%s:%s", title, post, title_site, desc, comment, poll);
+            console.log("Article Add- %s: %s: %s: %s:%s:%s:%s:%s", title, post, title_site, desc, comment, poll,avtor, publish);
             j.post('/admin/article-post-add', {
                 'title': title,
                 'post': post,
@@ -48,7 +48,8 @@ function getCaretPos(obj) {
                 'desc': desc,
                 'comment': comment,
                 'poll': poll,
-                'avtor': avtor
+                'avtor': avtor,
+                'publish': publish
             }, function (data) {
                 console.log(data);
                 var obj = JSON.parse(JSON.stringify(data));
