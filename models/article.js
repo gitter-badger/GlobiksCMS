@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-var id = new mongoose.Types.ObjectId;
-//    ObjectId = Schema.ObjectId;
+
 //    
 //    // Article
 //var Images = new Schema({
@@ -75,13 +74,6 @@ Article.path('title').validate(function (v) {
     if(v.length > 5 && v.length < 350) return true
         return v.length
 }, 'Заголовок не может быть короче 5 и дленее 350 символов');
-//Article.path('url').validate(function (v){
-//    
-//}
-//Article.path('url').validate(function (url) {
-//  // if you are authenticating by any of the oauth strategies, don't validate
-////  if (authTypes.indexOf(this.provider) !== -1) return true
-//  return url+'-';
-//}, 'URL cannot be blank');
+
 
 module.exports = mongoose.model('Article', Article);
