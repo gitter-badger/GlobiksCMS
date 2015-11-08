@@ -20,6 +20,7 @@ block content
                 .row
                     .form-group
                         form(action="" metod="post")
+                            input(type="hidden", name="_csrf", value="#{csrftoken}")
                             .col-lg-8.article_add
                                 label Заголовок статьи:
                                 input.form-control(type="text" name="title")
@@ -36,23 +37,38 @@ block content
                                 label Заголовок Страницы:
                                 input.form-control(type="text" name="title_site")
                                 label Описание страницы (description):
-                                textarea#input_desc.form-control(name="desc" rows="5" required="required")
-                                label Ключевые слова(description)
-                                textarea#input_key.form-control(name="key" rows="3" required="required")
-                            .col-lg-12   
-                                .form-group
-                                    label
-                                        input(type="checkbox" name='comments' value="1", checked).js-switch#comments 
-                                        p Разрешить коментарии статьи.
-                                    label
-                                        input(type="checkbox" name='add' value="1", checked).js-switch#publish 
-                                        p Опубликовать статью.  
-                                    label
-                                        input(type="checkbox" name='poll' value="1", checked).js-switch#poll 
-                                        p Разрешить оценивать статью. 
-                            
+                                textarea#input_desc.mceNoEditor.form-control(name="desc" rows="5" required="required")
+                                label Ключевые слова(keywords)
+                                textarea#input_key.mceNoEditor.form-control(name="key" rows="3" required="required")
+                                                         
+                            .col-lg-12.form-group
+                                label
+                                    input(type="checkbox" name='comments' value="1", checked).js-switch#comments 
+                                    p Разрешить коментарии статьи.
+                                label
+                                    input(type="checkbox" name='add' value="1", checked).js-switch#publish 
+                                    p Опубликовать статью.  
+                                label
+                                    input(type="checkbox" name='poll' value="1", checked).js-switch#poll 
+                                    p Разрешить оценивать статью.                                       
                                 span.input-group-btn
                                     button#post_add.btn.btn-default.btn-large.btn-bloc(type="button") Добавить статью
+                    .col-lg-12
+                        #dropfile
+                            ul.nav.nav-tabs
+                                li.active
+                                    a(href='#') Загрузка фoто
+                                li.local
+                                    a(href='#') Лакальное хранилище
+                            div
+                                    #dropzone
+                                        form#my-dropzone.dropzone(action='/admin/upload',  method="post")
+                                            //-.dz-message.needsclick Drag'n'Drop files here or click to upload.  
+                                               //-br   
+                                               //-span.note.needsclick
+                                                    //-| (Перетащите в эту область изображения для статьи.)
+                                    #local
+                                       | локальные файлы
                                        
     
     include ./include/footer

@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
 //    
 //    // Article
 //var Images = new Schema({
@@ -48,14 +47,18 @@ var Article = new Schema({
         type: Boolean,
         required: true
     },
-//    comments: [{
-//        text: String,
-//        postedBy: {
-//            type: mongoose.Schema.Types.ObjectId,
-//            ref: 'User'
-//        }
-//    }]
+    //    comments: [{
+    //        text: String,
+    //        postedBy: {
+    //            type: mongoose.Schema.Types.ObjectId,
+    //            ref: 'User'
+    //        }
+    //    }]
     description: {
+        type: String,
+        required: true
+    },
+    keywords: {
         type: String,
         required: true
     },
@@ -66,13 +69,14 @@ var Article = new Schema({
     },
     url: {
         type: String,
-        lowercase: true
+        lowercase: true,
+        trim: true
     }
 });
 
 Article.path('title').validate(function (v) {
-    if(v.length > 5 && v.length < 350) return true
-        return v.length
+    if (v.length > 5 && v.length < 350) return true
+    return v.length
 }, 'Заголовок не может быть короче 5 и дленее 350 символов');
 
 

@@ -17,7 +17,7 @@ var routes = require('./routes/index'),
     users = require('./routes/users'),
     articles = require('./routes/articles'),
     admin  = require('./routes/admin');
-
+var csrf = require('csurf');
 
 var app = express();
 
@@ -27,6 +27,12 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.disable('x-powered-by');
+//app.use(cookieParser());
+app.use(cookieParser(config.secret));
+
+//app.use(csrf({ cookie: true }));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -46,7 +52,7 @@ app.use(session({
     }
 }));
 
-app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -62,6 +68,14 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
+app.use(function (err, req, res, next) {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
+//    res.locals.csrftoken = req.csrfToken();
+ 
+  // handle CSRF token errors here 
+  res.status(403);
+  res.send('form tampered with');
+});
 
 // development error handler
 // will print stacktrace
