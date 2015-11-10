@@ -1,5 +1,7 @@
 #GlobiksCMS
 
+[![Join the chat at https://gitter.im/globiks/GlobiksCMS](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/globiks/GlobiksCMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Система управления контентом (CMS) основанная на платформе Node.JS содержащая статьи, блоги, комментарии, форум, фотогаллереи.
 > ~(В процессе разработки)
 
